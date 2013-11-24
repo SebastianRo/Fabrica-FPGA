@@ -1,0 +1,223 @@
+module ccd_reader	(
+							clk,
+							rst_n,
+							valve1_decision,
+							valve2_decision,
+							valve1_cmd,
+							valve2_cmd
+						);
+						
+localparam DUMMY_LENGTH = 160; //1997?
+localparam CCD_LENGTH = 882; //1018?
+					
+input						clk;
+input						rst_n;
+input						valve1_decision;
+input						valve2_decision;
+output reg 				valve1_cmd;
+output reg				valve2_cmd;
+
+parameter 	 [1:0] IDLE_CCD_READ  = 2'b00,
+                   DUMMY_CCD_READ = 2'b01,
+                   READ_CCD_ONE 	 = 2'b10,
+                   READ_CCD_ZERO  = 2'b11;
+						
+reg			 [12:0]	counter_100us;
+reg			 [14:0]	counter;					// counts up to 3276,8 ms 
+reg			 [1:0]	state, state_next;
+//reg						count_up_dld;
+reg			 [9:0]	counter_next;
+reg			 [10:0]	data_out_next;
+reg						signal_dld;
+reg						ccd_pulse_chng;
+reg						dummy_over;
+
+reg						data_debounced;
+reg			[9:0]		counter_debounce;									
+reg						data_in_0;	
+reg						data_in_1;
+reg						data_in_2;
+reg						data_in_3;
+
+wire						enable_100us;
+
+//=======================================================
+//  Structural coding
+//=======================================================
+
+always	@(posedge clk)
+begin
+	if	(!rst_n)  counter_100us <= #1 5000; // coresponds to 100 microseconds
+   else         
+		if (|counter_100us) counter_100us <= #1 counter_100us - 1'b1;
+		else					  counter_100us <= #1 5000;
+end
+
+assign enable_100us = ~|counter_100us;
+
+always	@(posedge clk)
+begin
+	if	(!rst_n)  state <= #1 IDLE_CCD_READ;
+   else         state <= #1 state_next;
+end
+
+always @(*)
+begin
+		state_next = 3'bX;
+		//counter = #1 counter_dld;
+		
+		case (state)
+		
+		IDLE_CCD_READ: begin	
+								if (en_pulse && sh_pulse)		state_next = DUMMY_CCD_READ;
+								else 									state_next = IDLE_CCD_READ;
+							end
+		
+		DUMMY_CCD_READ: begin
+								if (en_pulse) begin
+									if (dummy_over) begin
+										if (data_in == 1'b1)    state_next = READ_CCD_ONE;
+										else						   state_next = READ_CCD_ZERO;
+									end else							state_next = DUMMY_CCD_READ;
+								end else								state_next = IDLE_CCD_READ;
+							 end
+				 
+		READ_CCD_ONE:	begin
+								if (en_pulse) begin
+									if (readall_samples)			state_next = IDLE_CCD_READ;
+									else begin
+											if (ccd_pulse_chng)  state_next = READ_CCD_ZERO;
+											else						state_next = READ_CCD_ONE;			
+									     end
+								end else								state_next = IDLE_CCD_READ;
+							end
+		
+		READ_CCD_ZERO:	begin
+								if (en_pulse) begin
+									if (readall_samples)			state_next = IDLE_CCD_READ;
+									else begin
+											if (ccd_pulse_chng)  state_next = READ_CCD_ONE;
+											else						state_next = READ_CCD_ZERO;			
+									     end
+								end else								state_next = IDLE_CCD_READ;
+							end
+								  
+		endcase
+		 
+end
+
+always @(*)
+begin
+	counter_next = counter;
+	data_out_next = data_out;
+	//if (state_next == IDLE_CCD_READ) data_out_next = 1024'h0;
+	case(state)
+	
+		IDLE_CCD_READ: begin
+								counter_next = DUMMY_LENGTH;
+								data_out_next = 11'b0;
+							end
+	
+		DUMMY_CCD_READ: begin
+									if (ccd_pulse) begin
+										if (|counter) counter_next = counter_next - 1'b1;
+										else counter_next = 10'b0;
+									end
+							 end
+		
+		READ_CCD_ONE: begin
+								if (counter != CCD_LENGTH)	begin
+									if (ccd_pulse) counter_next = counter_next + 1'b1;
+									if (ccd_pulse_chng) data_out_next = {1'b1, counter};
+								end
+								else data_out_next = {1'b1, counter};
+						  end
+		
+		READ_CCD_ZERO: begin
+								if (counter != CCD_LENGTH)	begin
+									if (ccd_pulse) counter_next = counter_next + 1'b1;
+									if (ccd_pulse_chng) data_out_next = {1'b0, counter};
+								end
+								else data_out_next = {1'b0, counter};
+						   end
+		
+		//OUTPUT_VALID: ;
+		
+		endcase
+end
+
+always @(posedge clk)
+begin
+	if	(!rst_n)  begin
+			data_out <= #1 11'h0;
+			data_out_valid <= #1 1'b0;
+			readall_samples <= #1 1'b0;
+			dummy_over <= #1 1'b0;
+			counter <= #1 DUMMY_LENGTH;
+			//counter_dld <= #1 CCD_LENGTH;
+						
+   end else  begin
+			data_out <= #1 data_out_next;
+			data_out_valid <= #1 1'b0;
+			readall_samples <= #1 1'b0;
+			dummy_over <= #1 1'b0;
+			counter <= #1 counter_next;
+			//counter_dld <= #1 counter;
+		
+	case(state_next)
+		
+			IDLE_CCD_READ: begin
+									//counter <= #1 CCD_LENGTH;
+									data_out <= #1 11'h0;
+			end
+			
+			DUMMY_CCD_READ: begin
+									if (~|counter) begin
+										dummy_over <= #1 1'b1;
+									end
+		  end									
+												
+			READ_CCD_ONE: begin
+				 if (counter == CCD_LENGTH) begin
+					data_out_valid <= #1 1'b1;
+					readall_samples <= #1 1'b1;
+					//data_out <= #1 {1'b1, counter};
+				 end 
+				 else if (ccd_pulse_chng) begin
+							data_out_valid <= #1 1'b1;
+							//data_out <= #1 {1'b1, counter};
+						end
+			end
+			
+			READ_CCD_ZERO: begin
+				 if (counter == CCD_LENGTH) begin
+					data_out_valid <= #1 1'b1;
+					readall_samples <= #1 1'b1;
+					//data_out <= #1 {1'b0, counter};
+				 end 
+				 else if (ccd_pulse_chng) begin
+							data_out_valid <= #1 1'b1;
+							//data_out <= #1 {1'b0, counter};
+						end
+			end
+		
+			//OUTPUT_VALID: ;
+			
+		endcase
+	end
+				
+end
+
+parameter	preset_val 	= 0;
+parameter 	counter_max = 500; 
+
+//this circuit detects a transition in the CCD pulse
+
+always @ (posedge clk )
+begin
+	if (ccd_pulse) data_debounced <= #1 data_in;
+	signal_dld <= #1 data_debounced;
+	ccd_pulse_chng <= #1(signal_dld & !data_debounced) | (data_debounced & !signal_dld);
+end
+	
+endmodule

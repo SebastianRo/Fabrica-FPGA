@@ -1,0 +1,83 @@
+module counter	(
+							clk,
+							rst_n,
+							data_in,
+							en_pulse,
+							sh_pulse,
+							ccd_pulse,
+							data_out,
+							data_out_valid
+						);
+					
+input						clk;
+input						rst_n;
+input						data_in;
+input						en_pulse;
+input						sh_pulse;
+input						ccd_pulse;
+output reg [1023:0]	data_out;
+output reg				data_out_valid;
+
+parameter 	 [1:0] IDLE_CCD_READ  = 2'b00,
+                   READ_CCD 		= 2'b01,
+                   OUTPUT_VALID 	= 2'b10;
+						
+reg			 [10:0]	counter;
+reg			 [1:0]	state;
+//reg						count_up_dld;
+
+//=======================================================
+//  Structural coding
+//=======================================================
+
+
+always	@(posedge clk)
+begin
+	if	(!rst_n)  state <= IDLE_CCD_READ;
+   else         state <= state_next;
+end
+
+always @(*)
+begin
+		case (state)
+		
+		IDLE_CCD_READ: begin	
+								if (en_pulse && sh_pulse)
+								begin	
+									data_out = {data_in,data_out[1023:1]};
+									counter = counter - 1'b1;
+									state_next = READ_CCD;
+								end else begin
+									counter = 11'd1087;
+									state_next = IDLE_CCD_READ;
+								end
+							end
+				 
+		READ_CCD:		begin
+								if (en_pulse) begin
+									if (~|counter)	begin
+										data_out_valid = 1'b1;
+										state_next = OUTPUT_VALID;
+									end else if (ccd_pulse) begin	
+										data_out = {data_in,data_out[1023:1]};
+										counter = counter - 1'b1;
+										state_next = READ_CCD;
+									end else begin
+										state_next = READ_CCD;
+									end				
+								end else state_next = IDLE_CCD_READ;
+							end
+					 
+		OUTPUT_VALID: begin
+								data_out_valid = 1'b0;
+								state_next = IDLE_CCD_READ;
+						  end
+		endcase
+		
+			
+	end 
+end
+
+	
+endmodule
+

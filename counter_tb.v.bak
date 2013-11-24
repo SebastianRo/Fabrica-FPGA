@@ -1,0 +1,22 @@
+// Testbench Code Goes here
+module counter_tb;
+
+reg encount, countdir;
+wire [3:0] dataout;
+
+initial begin
+  $monitor ("en_count=%b,count_dir=%b,dataout=%d", encount,countdir,dataout);
+  encount = 0;
+  countdir = 0;
+  #5 encount = 1;
+  countdir 0;
+  #15 $finish;
+end
+
+counter U0 (
+.en_count (encount),
+.count_dir (countdir),
+.data_out (dataout)
+);
+
+endmodule

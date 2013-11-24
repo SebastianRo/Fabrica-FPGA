@@ -1,0 +1,39 @@
+// Testbench Code Goes here
+module valve_cmd_tb;
+
+reg clock, rstn, valve1_dec_in, valve2_dec_in,partready; //countpulse;
+wire valve1_cmd_out, valve2_cmd_out;
+
+initial begin
+  //$monitor ("clock=%b,en_count=%b,count_up=%b,count_down=%b,dataout=%d", clock,encount,countup,countdown,dataout);
+  clock = 0;
+  rstn = 0;
+  valve1_dec_in = 0;
+  valve2_dec_in = 0;
+  partready = 0;
+  #5 rstn = 0;
+  #15 rstn = 1;
+  #25 partready = 1;
+	  valve1_dec_in = 1;
+	  valve2_dec_in = 0;
+  #10 partready = 0;
+	  valve1_dec_in = 0;
+	  valve2_dec_in = 0;
+  //#15 $finish;
+end
+
+always begin
+ #5 clock = !clock;
+end
+
+valve_cmd U0 (
+.clk(clock),
+.rst_n(rstn),
+.part_ready(partready),
+.valve1_decision (valve1_dec_in),
+.valve2_decision (valve2_dec_in),
+.valve1_cmd (valve1_cmd_out),
+.valve2_cmd (valve2_cmd_out)
+);
+
+endmodule

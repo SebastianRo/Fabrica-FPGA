@@ -1,0 +1,58 @@
+module binary_counter
+(
+	input clk, enable, rst_n,
+	output reg finish
+);
+
+	parameter 	 [1:0] IDLE_COUNTB  		= 2'b00,
+							 ACTIVE_COUNTB		= 2'b01,
+						 
+	reg [WIDTH-1:0] count;
+
+	// Reset if needed, or increment if counting is enabled
+	always @ (posedge clk or posedge reset)
+	begin
+		if (rst_n)	count <= 0;
+		else begin
+
+		case(state)
+		
+		COUNT_VALVE: begin
+								en_valve_open_cnt    <= #1 1'b0;
+								counter_fifo_in		<= #1 MAX;
+								cnt_wrreq_sig 			<= #1 1'b0;
+								valve1_wrreq_sig	 	<= #1 1'b0;
+								valve2_wrreq_sig 		<= #1 1'b0;
+								cnt_rdreq_sig 			<= #1 1'b0;
+								valve1_rdreq_sig	 	<= #1 1'b0;
+								valve2_rdreq_sig 		<= #1 1'b0;
+								if (~|counter) 					state <= #1 IDLE_VALVE;
+								else	if (part_ready) begin
+																		counter_fifo_in 		<= #1 MAX - counter;
+																		state <= #1 WRITE_VALVE_COUNT;
+															 end
+								else 									state <= #1 COUNT_VALVE;
+								if (enable_100us) counter <= counter - 1'b1;
+								if (~|counter)			en_valve_open_cnt    <= #1 1'b1;
+							end
+									
+			WRITE_VALVE_COUNT: begin
+									en_valve_open_cnt    <= #1 1'b0;
+									counter_fifo_in 		<= #1 MAX - counter;
+									cnt_wrreq_sig 			<= #1 1'b1;
+									valve1_wrreq_sig	 	<= #1 1'b1;
+									valve2_wrreq_sig 		<= #1 1'b1;
+									cnt_rdreq_sig 			<= #1 1'b0;
+									valve1_rdreq_sig	 	<= #1 1'b0;
+									valve2_rdreq_sig 		<= #1 1'b0;
+									if (~|counter) 					state <= #1 IDLE_VALVE;
+									else 									state <= #1 COUNT_VALVE;
+									if (enable_100us) counter <= counter - 1'b1;
+									if (~|counter)			en_valve_open_cnt    <= #1 1'b1;
+								 end
+			
+		endcase
+	end
+	end
+
+endmodule

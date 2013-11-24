@@ -1,0 +1,13 @@
+
+
+C:/Documents and Settings/sja/My Documents/Downloads/New Folder (2)/FIFO.v
+
+May 17 05PM:56:28>: The following design file, which has identical name but a different extension 
+from the specified variation file, already exists in the working directory:
+
+FIFO.vhd
+
+This may create a conflict of design files and/or lead to undesirable side
+effects.
+
+Is it OK to continue file generation?

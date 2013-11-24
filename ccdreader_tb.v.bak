@@ -1,0 +1,42 @@
+// Testbench Code Goes here
+module ccdreader_tb;
+
+reg clock, rstn, enpulse, shpulse, ccdpulse, datain; 
+wire [1023:0] dataout;
+wire 			  datavalid;
+
+initial begin
+  //$monitor ("clock=%b,en_count=%b,count_up=%b,count_down=%b,dataout=%d", clock,encount,countup,countdown,dataout);
+  clock = 0;
+  rstn = 0;
+  enpulse = 0;
+  shpulse = 0;
+  ccdpulse = 0;
+  datain = 0;
+  #15 rstn = 1;
+  #5 enpulse = 1;
+  #15 shpulse = 1;
+  #5 datain = 1;
+  #100 data_in = 0;
+  #300 data_in = 1;
+  #600 data_in = 0;
+  //#15 $finish;
+end
+
+always begin
+ #5 clock = !clock;
+ #20 ccd_pulse = !ccd_pulse;
+end
+
+ccd_reader U1 (
+.clk(clock),
+.rst_n(rstn),
+.data_in(datain),
+.en_pulse (enpulse),
+.sh_pulse (shpulse),
+.ccd_pulse (ccdpulse),
+.data_out (dataout),
+.data_out_valid(datavalid)
+);
+
+endmodule
