@@ -19,7 +19,7 @@
 ## PROGRAM "Quartus II"
 ## VERSION "Version 12.1 Build 177 11/07/2012 SJ Web Edition"
 
-## DATE    "Sun Nov 03 21:24:41 2013"
+## DATE    "Sun Dec 01 19:09:53 2013"
 
 ##
 ## DEVICE  "EP3C16F484C6"
@@ -39,6 +39,7 @@ set_time_format -unit ns -decimal_places 3
 #**************************************************************
 
 create_clock -name {clk50} -period 20.000 -waveform { 0.000 10.000 } [get_ports {CLOCK_50}]
+create_clock -name {clk50_virtual} -period 20.000 -waveform { 0.000 10.000 } 
 
 
 #**************************************************************
@@ -46,7 +47,8 @@ create_clock -name {clk50} -period 20.000 -waveform { 0.000 10.000 } [get_ports 
 #**************************************************************
 
 create_generated_clock -name {clock_ccd_inst|altpll_component|auto_generated|pll1|clk[0]} -source [get_pins {clock_ccd_inst|altpll_component|auto_generated|pll1|inclk[0]}] -duty_cycle 50.000 -multiply_by 1 -divide_by 25 -master_clock {clk50} [get_pins {clock_ccd_inst|altpll_component|auto_generated|pll1|clk[0]}] 
-create_generated_clock -name {clock_ccd_inst|altpll_component|auto_generated|pll1|clk[1]} -source [get_pins {clock_ccd_inst|altpll_component|auto_generated|pll1|inclk[0]}] -duty_cycle 50.000 -multiply_by 1 -divide_by 50 -master_clock {clk50} [get_pins {clock_ccd_inst|altpll_component|auto_generated|pll1|clk[1]}] 
+create_generated_clock -name {clock_ccd_inst|altpll_component|auto_generated|pll1|clk[1]} -source [get_pins {clock_ccd_inst|altpll_component|auto_generated|pll1|inclk[0]}] -duty_cycle 50.000 -multiply_by 1 -divide_by 100 -master_clock {clk50} [get_pins {clock_ccd_inst|altpll_component|auto_generated|pll1|clk[1]}] 
+create_generated_clock -name {ccd_sh_clk} -source [get_ports {CLOCK_50}] -edges { 1 51 120051 } -master_clock {clk50} -invert [get_nets {sh_generator_inst|data_out}] 
 
 
 #**************************************************************
@@ -59,18 +61,19 @@ create_generated_clock -name {clock_ccd_inst|altpll_component|auto_generated|pll
 # Set Clock Uncertainty
 #**************************************************************
 
-set_clock_uncertainty -rise_from [get_clocks {clk50}] -rise_to [get_clocks {clk50}]  0.020  
-set_clock_uncertainty -rise_from [get_clocks {clk50}] -fall_to [get_clocks {clk50}]  0.020  
-set_clock_uncertainty -fall_from [get_clocks {clk50}] -rise_to [get_clocks {clk50}]  0.020  
-set_clock_uncertainty -fall_from [get_clocks {clk50}] -fall_to [get_clocks {clk50}]  0.020  
-set_clock_uncertainty -rise_from [get_clocks {clock_ccd_inst|altpll_component|auto_generated|pll1|clk[0]}] -rise_to [get_clocks {clk50}]  0.010  
-set_clock_uncertainty -rise_from [get_clocks {clock_ccd_inst|altpll_component|auto_generated|pll1|clk[0]}] -fall_to [get_clocks {clk50}]  0.010  
-set_clock_uncertainty -fall_from [get_clocks {clock_ccd_inst|altpll_component|auto_generated|pll1|clk[0]}] -rise_to [get_clocks {clk50}]  0.010  
-set_clock_uncertainty -fall_from [get_clocks {clock_ccd_inst|altpll_component|auto_generated|pll1|clk[0]}] -fall_to [get_clocks {clk50}]  0.010  
-set_clock_uncertainty -rise_from [get_clocks {clock_ccd_inst|altpll_component|auto_generated|pll1|clk[1]}] -rise_to [get_clocks {clk50}]  0.010  
-set_clock_uncertainty -rise_from [get_clocks {clock_ccd_inst|altpll_component|auto_generated|pll1|clk[1]}] -fall_to [get_clocks {clk50}]  0.010  
-set_clock_uncertainty -fall_from [get_clocks {clock_ccd_inst|altpll_component|auto_generated|pll1|clk[1]}] -rise_to [get_clocks {clk50}]  0.010  
-set_clock_uncertainty -fall_from [get_clocks {clock_ccd_inst|altpll_component|auto_generated|pll1|clk[1]}] -fall_to [get_clocks {clk50}]  0.010  
+derive_clock_uncertainty
+#set_clock_uncertainty -rise_from [get_clocks {clock_ccd_inst|altpll_component|auto_generated|pll1|clk[1]}] -rise_to [get_clocks {clock_ccd_inst|altpll_component|auto_generated|pll1|clk[1]}]  0.020  
+#set_clock_uncertainty -rise_from [get_clocks {clock_ccd_inst|altpll_component|auto_generated|pll1|clk[1]}] -fall_to [get_clocks {clock_ccd_inst|altpll_component|auto_generated|pll1|clk[1]}]  0.020  
+#set_clock_uncertainty -fall_from [get_clocks {clock_ccd_inst|altpll_component|auto_generated|pll1|clk[1]}] -rise_to [get_clocks {clock_ccd_inst|altpll_component|auto_generated|pll1|clk[1]}]  0.020  
+#set_clock_uncertainty -fall_from [get_clocks {clock_ccd_inst|altpll_component|auto_generated|pll1|clk[1]}] -fall_to [get_clocks {clock_ccd_inst|altpll_component|auto_generated|pll1|clk[1]}]  0.020  
+#set_clock_uncertainty -rise_from [get_clocks {clock_ccd_inst|altpll_component|auto_generated|pll1|clk[0]}] -rise_to [get_clocks {clock_ccd_inst|altpll_component|auto_generated|pll1|clk[0]}]  0.020  
+#set_clock_uncertainty -rise_from [get_clocks {clock_ccd_inst|altpll_component|auto_generated|pll1|clk[0]}] -fall_to [get_clocks {clock_ccd_inst|altpll_component|auto_generated|pll1|clk[0]}]  0.020  
+#set_clock_uncertainty -fall_from [get_clocks {clock_ccd_inst|altpll_component|auto_generated|pll1|clk[0]}] -rise_to [get_clocks {clock_ccd_inst|altpll_component|auto_generated|pll1|clk[0]}]  0.020  
+#set_clock_uncertainty -fall_from [get_clocks {clock_ccd_inst|altpll_component|auto_generated|pll1|clk[0]}] -fall_to [get_clocks {clock_ccd_inst|altpll_component|auto_generated|pll1|clk[0]}]  0.020  
+#set_clock_uncertainty -rise_from [get_clocks {clk50}] -rise_to [get_clocks {clk50}]  0.020  
+#set_clock_uncertainty -rise_from [get_clocks {clk50}] -fall_to [get_clocks {clk50}]  0.020  
+#set_clock_uncertainty -fall_from [get_clocks {clk50}] -rise_to [get_clocks {clk50}]  0.020  
+#set_clock_uncertainty -fall_from [get_clocks {clk50}] -fall_to [get_clocks {clk50}]  0.020  
 
 
 #**************************************************************

@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="de0_debounce_cnt">
+		<CBX_INST_ENTRY INSTANCE_NAME="|de0_debounce_cnt|clock_ccd:clock_ccd_inst|altpll:altpll_component" CBX_FILE_NAME="clock_ccd_altpll.v"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|de0_debounce_cnt|part_mem:part_mem_inst|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_72k1.tdf"/>
+	</PROJECT>
+</LOG_ROOT>

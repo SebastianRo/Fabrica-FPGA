@@ -1,0 +1,17 @@
+
+State Machine - |de0_debounce_cnt|state
+Name state.WAIT_START state.MEMORIZE_PART state.DETECT_START_PART_MEMORIZE 
+state.WAIT_START 0 0 0 
+state.DETECT_START_PART_MEMORIZE 1 0 1 
+state.MEMORIZE_PART 1 1 0 
+
+State Machine - |de0_debounce_cnt|ccd_reader:ccdreader|state
+Name state.READ_CCD_ONE state.IDLE_CCD_READ state.READ_CCD_ZERO 
+state.IDLE_CCD_READ 0 0 0 
+state.READ_CCD_ONE 1 1 0 
+state.READ_CCD_ZERO 0 1 1 
+
+State Machine - |de0_debounce_cnt|sh_generator:sh_generator_inst|state
+Name state.STATE_SH_LOW 
+state.STATE_SH_HIGH 0 
+state.STATE_SH_LOW 1 
