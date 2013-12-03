@@ -1,5 +1,5 @@
 Analysis & Synthesis report for de0_debounce_cnt
-Sun Dec 01 23:38:37 2013
+Tue Dec 03 22:34:00 2013
 Quartus II 64-Bit Version 12.1 Build 177 11/07/2012 SJ Web Edition
 
 
@@ -15,22 +15,22 @@ Quartus II 64-Bit Version 12.1 Build 177 11/07/2012 SJ Web Edition
   7. Analysis & Synthesis Resource Utilization by Entity
   8. Analysis & Synthesis RAM Summary
   9. Analysis & Synthesis IP Cores Summary
- 10. State Machine - |de0_debounce_cnt|state
- 11. State Machine - |de0_debounce_cnt|ccd_reader:ccdreader|state
- 12. State Machine - |de0_debounce_cnt|sh_generator:sh_generator_inst|state
- 13. Registers Removed During Synthesis
- 14. Removed Registers Triggering Further Register Optimizations
- 15. General Register Statistics
- 16. Inverted Register Statistics
- 17. Multiplexer Restructuring Statistics (Restructuring Performed)
- 18. Source assignments for part_mem:part_mem_inst|altsyncram:altsyncram_component|altsyncram_72k1:auto_generated|altsyncram_jba2:altsyncram1
- 19. Parameter Settings for User Entity Instance: Top-level Entity: |de0_debounce_cnt
- 20. Parameter Settings for User Entity Instance: clock_ccd:clock_ccd_inst|altpll:altpll_component
- 21. Parameter Settings for User Entity Instance: button_debouncer:button_debouncer_inst0
- 22. Parameter Settings for User Entity Instance: ccd_reader:ccdreader
- 23. Parameter Settings for User Entity Instance: part_mem:part_mem_inst|altsyncram:altsyncram_component
- 24. altpll Parameter Settings by Entity Instance
- 25. altsyncram Parameter Settings by Entity Instance
+ 10. State Machine - |de0_debounce_cnt|ccd_reader:ccdreader|state
+ 11. State Machine - |de0_debounce_cnt|sh_generator:sh_generator_inst|state
+ 12. Registers Removed During Synthesis
+ 13. Removed Registers Triggering Further Register Optimizations
+ 14. General Register Statistics
+ 15. Inverted Register Statistics
+ 16. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 17. Source assignments for part_mem:part_mem_inst|altsyncram:altsyncram_component|altsyncram_72k1:auto_generated|altsyncram_jba2:altsyncram1
+ 18. Parameter Settings for User Entity Instance: Top-level Entity: |de0_debounce_cnt
+ 19. Parameter Settings for User Entity Instance: clock_ccd:clock_ccd_inst|altpll:altpll_component
+ 20. Parameter Settings for User Entity Instance: button_debouncer:button_debouncer_inst0
+ 21. Parameter Settings for User Entity Instance: ccd_reader:ccdreader
+ 22. Parameter Settings for User Entity Instance: part_mem:part_mem_inst|altsyncram:altsyncram_component
+ 23. altpll Parameter Settings by Entity Instance
+ 24. altsyncram Parameter Settings by Entity Instance
+ 25. Port Connectivity Checks: "SEG7_LUT:SEG0"
  26. Port Connectivity Checks: "part_mem:part_mem_inst"
  27. Port Connectivity Checks: "ccd_reader:ccdreader"
  28. Port Connectivity Checks: "edge_detector:button0_edge"
@@ -64,13 +64,13 @@ applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +------------------------------------+------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sun Dec 01 23:38:37 2013    ;
+; Analysis & Synthesis Status        ; Successful - Tue Dec 03 22:34:00 2013    ;
 ; Quartus II 64-Bit Version          ; 12.1 Build 177 11/07/2012 SJ Web Edition ;
 ; Revision Name                      ; de0_debounce_cnt                         ;
 ; Top-level Entity Name              ; de0_debounce_cnt                         ;
 ; Family                             ; Cyclone III                              ;
-; Total logic elements               ; 257                                      ;
-;     Total combinational functions  ; 237                                      ;
+; Total logic elements               ; 254                                      ;
+;     Total combinational functions  ; 234                                      ;
 ;     Dedicated logic registers      ; 146                                      ;
 ; Total registers                    ; 146                                      ;
 ; Total pins                         ; 52                                       ;
@@ -190,6 +190,7 @@ applicable agreement for further details.
 +----------------------------------+-----------------+-----------------------------------+----------------------------------------------------------------------+---------+
 ; File Name with User-Entered Path ; Used in Netlist ; File Type                         ; File Name with Absolute Path                                         ; Library ;
 +----------------------------------+-----------------+-----------------------------------+----------------------------------------------------------------------+---------+
+; SEG7_LUT.v                       ; yes             ; User Verilog HDL File             ; C:/Users/Mage/Documents/GitHub/Fabrica-FPGA/SEG7_LUT.v               ;         ;
 ; ccd_reader.v                     ; yes             ; User Verilog HDL File             ; C:/Users/Mage/Documents/GitHub/Fabrica-FPGA/ccd_reader.v             ;         ;
 ; edge_detect.v                    ; yes             ; User Verilog HDL File             ; C:/Users/Mage/Documents/GitHub/Fabrica-FPGA/edge_detect.v            ;         ;
 ; button_debouncer.v               ; yes             ; User Verilog HDL File             ; C:/Users/Mage/Documents/GitHub/Fabrica-FPGA/button_debouncer.v       ;         ;
@@ -225,16 +226,16 @@ applicable agreement for further details.
 +---------------------------------------------+-------+
 ; Resource                                    ; Usage ;
 +---------------------------------------------+-------+
-; Estimated Total logic elements              ; 257   ;
+; Estimated Total logic elements              ; 254   ;
 ;                                             ;       ;
-; Total combinational functions               ; 237   ;
+; Total combinational functions               ; 234   ;
 ; Logic element usage by number of LUT inputs ;       ;
-;     -- 4 input functions                    ; 99    ;
-;     -- 3 input functions                    ; 67    ;
-;     -- <=2 input functions                  ; 71    ;
+;     -- 4 input functions                    ; 96    ;
+;     -- 3 input functions                    ; 68    ;
+;     -- <=2 input functions                  ; 70    ;
 ;                                             ;       ;
 ; Logic elements by mode                      ;       ;
-;     -- normal mode                          ; 205   ;
+;     -- normal mode                          ; 202   ;
 ;     -- arithmetic mode                      ; 32    ;
 ;                                             ;       ;
 ; Total registers                             ; 146   ;
@@ -248,7 +249,7 @@ applicable agreement for further details.
 ;     -- PLLs                                 ; 1     ;
 ;                                             ;       ;
 ; Maximum fan-out                             ; 161   ;
-; Total fan-out                               ; 1441  ;
+; Total fan-out                               ; 1430  ;
 ; Average fan-out                             ; 2.83  ;
 +---------------------------------------------+-------+
 
@@ -258,7 +259,7 @@ applicable agreement for further details.
 +------------------------------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                                             ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                                                     ; Library Name ;
 +------------------------------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
-; |de0_debounce_cnt                                                      ; 237 (4)           ; 146 (3)      ; 12288       ; 0            ; 0       ; 0         ; 52   ; 0            ; |de0_debounce_cnt                                                                                                                                                                       ;              ;
+; |de0_debounce_cnt                                                      ; 234 (4)           ; 146 (3)      ; 12288       ; 0            ; 0       ; 0         ; 52   ; 0            ; |de0_debounce_cnt                                                                                                                                                                       ;              ;
 ;    |clock_ccd:clock_ccd_inst|                                          ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |de0_debounce_cnt|clock_ccd:clock_ccd_inst                                                                                                                                              ;              ;
 ;       |altpll:altpll_component|                                        ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |de0_debounce_cnt|clock_ccd:clock_ccd_inst|altpll:altpll_component                                                                                                                      ;              ;
 ;          |clock_ccd_altpll:auto_generated|                             ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |de0_debounce_cnt|clock_ccd:clock_ccd_inst|altpll:altpll_component|clock_ccd_altpll:auto_generated                                                                                      ;              ;
@@ -269,8 +270,8 @@ applicable agreement for further details.
 ;             |sld_mod_ram_rom:mgl_prim2|                                ; 62 (44)           ; 40 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |de0_debounce_cnt|part_mem:part_mem_inst|altsyncram:altsyncram_component|altsyncram_72k1:auto_generated|sld_mod_ram_rom:mgl_prim2                                                       ;              ;
 ;                |sld_rom_sr:\ram_rom_logic_gen:no_name_gen:info_rom_sr| ; 18 (18)           ; 8 (8)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |de0_debounce_cnt|part_mem:part_mem_inst|altsyncram:altsyncram_component|altsyncram_72k1:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:no_name_gen:info_rom_sr ;              ;
 ;    |sh_generator:sh_generator_inst|                                    ; 39 (39)           ; 18 (18)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |de0_debounce_cnt|sh_generator:sh_generator_inst                                                                                                                                        ;              ;
-;    |sld_hub:auto_hub|                                                  ; 132 (1)           ; 85 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |de0_debounce_cnt|sld_hub:auto_hub                                                                                                                                                      ;              ;
-;       |sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|                   ; 131 (94)          ; 85 (57)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |de0_debounce_cnt|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst                                                                                                         ;              ;
+;    |sld_hub:auto_hub|                                                  ; 129 (1)           ; 85 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |de0_debounce_cnt|sld_hub:auto_hub                                                                                                                                                      ;              ;
+;       |sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|                   ; 128 (91)          ; 85 (57)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |de0_debounce_cnt|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst                                                                                                         ;              ;
 ;          |sld_rom_sr:hub_info_reg|                                     ; 20 (20)           ; 9 (9)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |de0_debounce_cnt|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|sld_rom_sr:hub_info_reg                                                                                 ;              ;
 ;          |sld_shadow_jsm:shadow_jsm|                                   ; 17 (17)           ; 19 (19)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |de0_debounce_cnt|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|sld_shadow_jsm:shadow_jsm                                                                               ;              ;
 +------------------------------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
@@ -294,18 +295,6 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Altera ; ALTPLL       ; N/A     ; N/A          ; N/A          ; |de0_debounce_cnt|clock_ccd:clock_ccd_inst ; C:/Users/Mage/Documents/GitHub/Fabrica-FPGA/clock_ccd.v ;
 ; Altera ; RAM: 1-PORT  ; N/A     ; N/A          ; N/A          ; |de0_debounce_cnt|part_mem:part_mem_inst   ; C:/Users/Mage/Documents/GitHub/Fabrica-FPGA/part_mem.v  ;
 +--------+--------------+---------+--------------+--------------+--------------------------------------------+---------------------------------------------------------+
-
-
-Encoding Type:  One-Hot
-+--------------------------------------------------------------------------------------------------------------+
-; State Machine - |de0_debounce_cnt|state                                                                      ;
-+----------------------------------+------------------+---------------------+----------------------------------+
-; Name                             ; state.WAIT_START ; state.MEMORIZE_PART ; state.DETECT_START_PART_MEMORIZE ;
-+----------------------------------+------------------+---------------------+----------------------------------+
-; state.WAIT_START                 ; 0                ; 0                   ; 0                                ;
-; state.DETECT_START_PART_MEMORIZE ; 1                ; 0                   ; 1                                ;
-; state.MEMORIZE_PART              ; 1                ; 1                   ; 0                                ;
-+----------------------------------+------------------+---------------------+----------------------------------+
 
 
 Encoding Type:  One-Hot
@@ -349,23 +338,19 @@ Encoding Type:  One-Hot
 ; button_debouncer:button_debouncer_inst0|counter[0..20] ; Lost fanout                                     ;
 ; for_ccd_int                                            ; Merged with for_ccd                             ;
 ; ccd_reader:ccdreader|readall_samples                   ; Merged with ccd_reader:ccdreader|data_out_valid ;
+; state[0]                                               ; Stuck at GND due to stuck port data_in          ;
 ; part_mem_wren                                          ; Stuck at GND due to stuck port data_in          ;
-; sh_generator:sh_generator_inst|state~3                 ; Lost fanout                                     ;
-; state.DETECT_START_PART_MEMORIZE                       ; Stuck at GND due to stuck port data_in          ;
-; ccd_reader:ccdreader|state.READ_CCD_ONE                ; Stuck at GND due to stuck port data_in          ;
-; ccd_reader:ccdreader|data_out[11]                      ; Stuck at GND due to stuck port data_in          ;
-; state.MEMORIZE_PART                                    ; Stuck at GND due to stuck port data_in          ;
+; state[1]                                               ; Stuck at GND due to stuck port data_in          ;
 ; part_mem_address[0..9]                                 ; Stuck at GND due to stuck port data_in          ;
-; part_mem_in_reg[0,1]                                   ; Stuck at GND due to stuck port data_in          ;
 ; en_CCD_read_reg                                        ; Stuck at GND due to stuck port data_in          ;
-; part_mem_in_reg[2..11]                                 ; Stuck at GND due to stuck port data_in          ;
-; ccd_reader:ccdreader|data_out[0..10]                   ; Stuck at GND due to stuck port data_in          ;
+; part_mem_in_reg[0..11]                                 ; Stuck at GND due to stuck port data_in          ;
+; ccd_reader:ccdreader|data_out[0..11]                   ; Stuck at GND due to stuck port data_in          ;
 ; ccd_reader:ccdreader|data_out_valid                    ; Stuck at GND due to stuck port data_in          ;
-; ccd_reader:ccdreader|state.IDLE_CCD_READ               ; Stuck at GND due to stuck port data_in          ;
-; ccd_reader:ccdreader|counter[1..10]                    ; Stuck at GND due to stuck port sclear           ;
-; ccd_reader:ccdreader|state.READ_CCD_ZERO               ; Stuck at GND due to stuck port data_in          ;
-; ccd_reader:ccdreader|counter[0]                        ; Stuck at GND due to stuck port sclear           ;
-; Total Number of Removed Registers = 87                 ;                                                 ;
+; ccd_reader:ccdreader|state.IDLE_CCD_READ               ; Lost fanout                                     ;
+; ccd_reader:ccdreader|state.READ_CCD_ONE                ; Lost fanout                                     ;
+; ccd_reader:ccdreader|state.READ_CCD_ZERO               ; Lost fanout                                     ;
+; sh_generator:sh_generator_inst|state~3                 ; Lost fanout                                     ;
+; Total Number of Removed Registers = 76                 ;                                                 ;
 +--------------------------------------------------------+-------------------------------------------------+
 
 
@@ -374,26 +359,19 @@ Encoding Type:  One-Hot
 +---------------------------------------------------+---------------------------+-------------------------------------------------------------------------------------+
 ; Register name                                     ; Reason for Removal        ; Registers Removed due to This Register                                              ;
 +---------------------------------------------------+---------------------------+-------------------------------------------------------------------------------------+
-; ccd_reader:ccdreader|data_debounced               ; Stuck at GND              ; ccd_reader:ccdreader|ccd_pulse_chng, ccd_reader:ccdreader|data_out[11],             ;
-;                                                   ; due to stuck port data_in ; part_mem_in_reg[0], part_mem_in_reg[1], part_mem_in_reg[2], part_mem_in_reg[3],     ;
-;                                                   ;                           ; part_mem_in_reg[4], part_mem_in_reg[5], part_mem_in_reg[6], part_mem_in_reg[7],     ;
-;                                                   ;                           ; part_mem_in_reg[8], part_mem_in_reg[9], part_mem_in_reg[10], part_mem_in_reg[11],   ;
-;                                                   ;                           ; ccd_reader:ccdreader|data_out[0], ccd_reader:ccdreader|data_out[1],                 ;
-;                                                   ;                           ; ccd_reader:ccdreader|data_out[2], ccd_reader:ccdreader|data_out[3],                 ;
-;                                                   ;                           ; ccd_reader:ccdreader|data_out[4], ccd_reader:ccdreader|data_out[5],                 ;
-;                                                   ;                           ; ccd_reader:ccdreader|data_out[6], ccd_reader:ccdreader|data_out[7],                 ;
-;                                                   ;                           ; ccd_reader:ccdreader|data_out[8], ccd_reader:ccdreader|data_out[9],                 ;
-;                                                   ;                           ; ccd_reader:ccdreader|data_out[10], ccd_reader:ccdreader|data_out_valid              ;
-; state.DETECT_START_PART_MEMORIZE                  ; Stuck at GND              ; part_mem_address[0], part_mem_address[1], part_mem_address[2], part_mem_address[3], ;
-;                                                   ; due to stuck port data_in ; part_mem_address[4], part_mem_address[5], part_mem_address[6], part_mem_address[7], ;
-;                                                   ;                           ; part_mem_address[8], part_mem_address[9], en_CCD_read_reg,                          ;
-;                                                   ;                           ; ccd_reader:ccdreader|state.READ_CCD_ZERO                                            ;
-; ccd_reader:ccdreader|state.IDLE_CCD_READ          ; Stuck at GND              ; ccd_reader:ccdreader|counter[1], ccd_reader:ccdreader|counter[2],                   ;
-;                                                   ; due to stuck port data_in ; ccd_reader:ccdreader|counter[3], ccd_reader:ccdreader|counter[4],                   ;
-;                                                   ;                           ; ccd_reader:ccdreader|counter[5], ccd_reader:ccdreader|counter[6],                   ;
-;                                                   ;                           ; ccd_reader:ccdreader|counter[7], ccd_reader:ccdreader|counter[8],                   ;
-;                                                   ;                           ; ccd_reader:ccdreader|counter[9], ccd_reader:ccdreader|counter[10],                  ;
-;                                                   ;                           ; ccd_reader:ccdreader|counter[0]                                                     ;
+; state[0]                                          ; Stuck at GND              ; part_mem_address[9], part_mem_address[8], part_mem_address[7], part_mem_address[6], ;
+;                                                   ; due to stuck port data_in ; part_mem_address[5], part_mem_address[4], part_mem_address[3], part_mem_address[2], ;
+;                                                   ;                           ; part_mem_address[1], part_mem_address[0], en_CCD_read_reg, part_mem_in_reg[11],     ;
+;                                                   ;                           ; part_mem_in_reg[10], part_mem_in_reg[9], part_mem_in_reg[8], part_mem_in_reg[7],    ;
+;                                                   ;                           ; part_mem_in_reg[6], part_mem_in_reg[5], part_mem_in_reg[4], part_mem_in_reg[3],     ;
+;                                                   ;                           ; part_mem_in_reg[2], part_mem_in_reg[1], part_mem_in_reg[0]                          ;
+; ccd_reader:ccdreader|data_debounced               ; Stuck at GND              ; ccd_reader:ccdreader|ccd_pulse_chng, ccd_reader:ccdreader|data_out[0],              ;
+;                                                   ; due to stuck port data_in ; ccd_reader:ccdreader|data_out[1], ccd_reader:ccdreader|data_out[2],                 ;
+;                                                   ;                           ; ccd_reader:ccdreader|data_out[3], ccd_reader:ccdreader|data_out[4],                 ;
+;                                                   ;                           ; ccd_reader:ccdreader|data_out[5], ccd_reader:ccdreader|data_out[6],                 ;
+;                                                   ;                           ; ccd_reader:ccdreader|data_out[7], ccd_reader:ccdreader|data_out[8],                 ;
+;                                                   ;                           ; ccd_reader:ccdreader|data_out[9], ccd_reader:ccdreader|data_out[10],                ;
+;                                                   ;                           ; ccd_reader:ccdreader|data_out[11], ccd_reader:ccdreader|data_out_valid              ;
 ; button_debouncer:button_debouncer_inst0|data_in_0 ; Stuck at GND              ; button_debouncer:button_debouncer_inst0|data_in_1,                                  ;
 ;                                                   ; due to stuck port data_in ; button_debouncer:button_debouncer_inst0|data_in_2,                                  ;
 ;                                                   ;                           ; button_debouncer:button_debouncer_inst0|data_in_3,                                  ;
@@ -435,27 +413,22 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                                                                                                                              ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; 3:1                ; 12 bits   ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; Yes        ; |de0_debounce_cnt|ccd_reader:ccdreader|data_out[0]                                                                                                                                                      ;
 ; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |de0_debounce_cnt|sh_generator:sh_generator_inst|counter[10]                                                                                                                                            ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |de0_debounce_cnt|part_mem:part_mem_inst|altsyncram:altsyncram_component|altsyncram_72k1:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_data_shift_cntr_reg[3]                                        ;
-; 3:1                ; 12 bits   ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; Yes        ; |de0_debounce_cnt|part_mem:part_mem_inst|altsyncram:altsyncram_component|altsyncram_72k1:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_data_reg[5]                                                   ;
-; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |de0_debounce_cnt|part_mem:part_mem_inst|altsyncram:altsyncram_component|altsyncram_72k1:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_addr_reg[9]                                                   ;
-; 5:1                ; 7 bits    ; 21 LEs        ; 14 LEs               ; 7 LEs                  ; Yes        ; |de0_debounce_cnt|sh_generator:sh_generator_inst|counter[9]                                                                                                                                             ;
-; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; Yes        ; |de0_debounce_cnt|sh_generator:sh_generator_inst|counter[0]                                                                                                                                             ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |de0_debounce_cnt|part_mem:part_mem_inst|altsyncram:altsyncram_component|altsyncram_72k1:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:no_name_gen:info_rom_sr|word_counter[2] ;
-; 16:1               ; 4 bits    ; 40 LEs        ; 24 LEs               ; 16 LEs                 ; Yes        ; |de0_debounce_cnt|part_mem:part_mem_inst|altsyncram:altsyncram_component|altsyncram_72k1:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:no_name_gen:info_rom_sr|WORD_SR[0]      ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |de0_debounce_cnt|sh_generator:sh_generator_inst|data_out                                                                                                                                               ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |de0_debounce_cnt|ccd_reader:ccdreader|state                                                                                                                                                            ;
-; 3:1                ; 11 bits   ; 22 LEs        ; 11 LEs               ; 11 LEs                 ; No         ; |de0_debounce_cnt|ccd_reader:ccdreader|counter_next                                                                                                                                                     ;
-; 4:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; No         ; |de0_debounce_cnt|part_mem_address_next                                                                                                                                                                 ;
-; 5:1                ; 12 bits   ; 36 LEs        ; 12 LEs               ; 24 LEs                 ; No         ; |de0_debounce_cnt|part_mem_in[0]                                                                                                                                                                        ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |de0_debounce_cnt|part_mem:part_mem_inst|altsyncram:altsyncram_component|altsyncram_72k1:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_data_shift_cntr_reg[2]                                        ;
+; 3:1                ; 12 bits   ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; Yes        ; |de0_debounce_cnt|part_mem:part_mem_inst|altsyncram:altsyncram_component|altsyncram_72k1:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_data_reg[0]                                                   ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |de0_debounce_cnt|part_mem:part_mem_inst|altsyncram:altsyncram_component|altsyncram_72k1:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_addr_reg[7]                                                   ;
+; 5:1                ; 7 bits    ; 21 LEs        ; 14 LEs               ; 7 LEs                  ; Yes        ; |de0_debounce_cnt|sh_generator:sh_generator_inst|counter[14]                                                                                                                                            ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; Yes        ; |de0_debounce_cnt|sh_generator:sh_generator_inst|counter[4]                                                                                                                                             ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |de0_debounce_cnt|part_mem:part_mem_inst|altsyncram:altsyncram_component|altsyncram_72k1:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:no_name_gen:info_rom_sr|word_counter[0] ;
+; 16:1               ; 4 bits    ; 40 LEs        ; 24 LEs               ; 16 LEs                 ; Yes        ; |de0_debounce_cnt|part_mem:part_mem_inst|altsyncram:altsyncram_component|altsyncram_72k1:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:no_name_gen:info_rom_sr|WORD_SR[1]      ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |de0_debounce_cnt|sh_generator:sh_generator_inst|state                                                                                                                                                  ;
 ; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |de0_debounce_cnt|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|hub_minor_ver_reg[0]                                                                                                    ;
 ; 5:1                ; 5 bits    ; 15 LEs        ; 5 LEs                ; 10 LEs                 ; Yes        ; |de0_debounce_cnt|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|irf_reg[1][4]                                                                                                           ;
 ; 4:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |de0_debounce_cnt|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|mixer_addr_reg[4]                                                                                                       ;
 ; 5:1                ; 5 bits    ; 15 LEs        ; 5 LEs                ; 10 LEs                 ; Yes        ; |de0_debounce_cnt|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|sld_rom_sr:hub_info_reg|word_counter[2]                                                                                 ;
 ; 6:1                ; 4 bits    ; 16 LEs        ; 4 LEs                ; 12 LEs                 ; Yes        ; |de0_debounce_cnt|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|irsr_reg[0]                                                                                                             ;
 ; 6:1                ; 5 bits    ; 20 LEs        ; 5 LEs                ; 15 LEs                 ; Yes        ; |de0_debounce_cnt|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|shadow_irf_reg[1][0]                                                                                                    ;
-; 34:1               ; 4 bits    ; 88 LEs        ; 60 LEs               ; 28 LEs                 ; Yes        ; |de0_debounce_cnt|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|design_hash_reg[3]                                                                                                      ;
+; 34:1               ; 4 bits    ; 88 LEs        ; 56 LEs               ; 32 LEs                 ; Yes        ; |de0_debounce_cnt|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|design_hash_reg[3]                                                                                                      ;
 ; 20:1               ; 4 bits    ; 52 LEs        ; 32 LEs               ; 20 LEs                 ; Yes        ; |de0_debounce_cnt|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|sld_rom_sr:hub_info_reg|WORD_SR[0]                                                                                      ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
@@ -977,6 +950,18 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------------------------+--------------------------------------------------------+
 
 
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "SEG7_LUT:SEG0"                                                                                                                                  ;
++---------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port    ; Type   ; Severity ; Details                                                                                                                                      ;
++---------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; oSEG    ; Output ; Warning  ; Output or bidir port (7 bits) is wider than the port expression (1 bits) it drives; bit(s) "oSEG[6..1]" have no fanouts                      ;
+; oSEG    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                          ;
+; oSEG_DP ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                          ;
+; iDIG    ; Input  ; Warning  ; Input port expression (2 bits) is smaller than the input port (4 bits) it drives.  Extra input bit(s) "iDIG[3..2]" will be connected to GND. ;
++---------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+
+
 +----------------------------------------------------+
 ; Port Connectivity Checks: "part_mem:part_mem_inst" ;
 +------+--------+----------+-------------------------+
@@ -1029,7 +1014,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Partition Name   ; Elapsed Time ;
 +------------------+--------------+
 ; sld_hub:auto_hub ; 00:00:01     ;
-; Top              ; 00:00:01     ;
+; Top              ; 00:00:02     ;
 +------------------+--------------+
 
 
@@ -1039,9 +1024,11 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 12.1 Build 177 11/07/2012 SJ Web Edition
-    Info: Processing started: Sun Dec 01 23:38:29 2013
+    Info: Processing started: Tue Dec 03 22:33:47 2013
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off de0_debounce_cnt -c de0_debounce_cnt
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file seg7_lut.v
+    Info (12023): Found entity 1: SEG7_LUT
 Info (12021): Found 1 design units, including 1 entities, in source file ccd_reader.v
     Info (12023): Found entity 1: ccd_reader
 Info (12021): Found 1 design units, including 1 entities, in source file edge_detect.v
@@ -1054,7 +1041,20 @@ Info (12021): Found 1 design units, including 1 entities, in source file de0_deb
     Info (12023): Found entity 1: de0_debounce_cnt
 Info (12021): Found 1 design units, including 1 entities, in source file sh_generator.v
     Info (12023): Found entity 1: sh_generator
+Warning (10236): Verilog HDL Implicit Net warning at de0_debounce_cnt.v(200): created implicit net for "HEX0_D"
+Warning (10236): Verilog HDL Implicit Net warning at de0_debounce_cnt.v(201): created implicit net for "HEX0_DP"
 Info (12127): Elaborating entity "de0_debounce_cnt" for the top level hierarchy
+Warning (10230): Verilog HDL assignment warning at de0_debounce_cnt.v(208): truncated value with size 4 to match size of target (2)
+Warning (10230): Verilog HDL assignment warning at de0_debounce_cnt.v(229): truncated value with size 4 to match size of target (2)
+Warning (10230): Verilog HDL assignment warning at de0_debounce_cnt.v(245): truncated value with size 4 to match size of target (2)
+Warning (10230): Verilog HDL assignment warning at de0_debounce_cnt.v(247): truncated value with size 4 to match size of target (2)
+Warning (10230): Verilog HDL assignment warning at de0_debounce_cnt.v(254): truncated value with size 4 to match size of target (2)
+Warning (10230): Verilog HDL assignment warning at de0_debounce_cnt.v(256): truncated value with size 4 to match size of target (2)
+Warning (10230): Verilog HDL assignment warning at de0_debounce_cnt.v(258): truncated value with size 4 to match size of target (2)
+Warning (10230): Verilog HDL assignment warning at de0_debounce_cnt.v(268): truncated value with size 4 to match size of target (2)
+Warning (10230): Verilog HDL assignment warning at de0_debounce_cnt.v(274): truncated value with size 4 to match size of target (2)
+Warning (10230): Verilog HDL assignment warning at de0_debounce_cnt.v(276): truncated value with size 4 to match size of target (2)
+Warning (10230): Verilog HDL assignment warning at de0_debounce_cnt.v(279): truncated value with size 4 to match size of target (2)
 Warning (10034): Output port "GPIO1_CLKOUT[1]" at de0_debounce_cnt.v(45) has no driver
 Warning (10034): Output port "GPIO0_D[31..1]" at de0_debounce_cnt.v(46) has no driver
 Info (12128): Elaborating entity "clock_ccd" for hierarchy "clock_ccd:clock_ccd_inst"
@@ -1176,6 +1176,8 @@ Info (12133): Instantiated megafunction "part_mem:part_mem_inst|altsyncram:altsy
     Info (12134): Parameter "WIDTH_WORD" = "12"
     Info (12134): Parameter "WIDTHAD" = "10"
 Info (12128): Elaborating entity "sld_rom_sr" for hierarchy "part_mem:part_mem_inst|altsyncram:altsyncram_component|altsyncram_72k1:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:no_name_gen:info_rom_sr"
+Info (12128): Elaborating entity "SEG7_LUT" for hierarchy "SEG7_LUT:SEG0"
+Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "GPIO1_CLKOUT[1]" is stuck at GND
     Warning (13410): Pin "GPIO0_D[0]" is stuck at GND
@@ -1211,7 +1213,7 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "GPIO0_D[30]" is stuck at GND
     Warning (13410): Pin "GPIO0_D[31]" is stuck at GND
 Info (286031): Timing-Driven Synthesis is running on partition "Top"
-Info (17049): 22 registers lost all their fanouts during netlist optimizations.
+Info (17049): 25 registers lost all their fanouts during netlist optimizations.
 Info (13000): Registers with preset signals will power-up high
 Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
 Warning (13024): Output pins are stuck at VCC or GND
@@ -1236,17 +1238,17 @@ Warning (21074): Design contains 14 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "GPIO0_CLKIN[1]"
     Warning (15610): No output dependent on input pin "GPIO1_CLKIN[0]"
     Warning (15610): No output dependent on input pin "GPIO1_CLKIN[1]"
-Info (21057): Implemented 332 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 329 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 19 input pins
     Info (21059): Implemented 37 output pins
-    Info (21061): Implemented 262 logic cells
+    Info (21061): Implemented 259 logic cells
     Info (21064): Implemented 12 RAM segments
     Info (21065): Implemented 1 PLLs
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 62 warnings
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 76 warnings
     Info: Peak virtual memory: 497 megabytes
-    Info: Processing ended: Sun Dec 01 23:38:37 2013
-    Info: Elapsed time: 00:00:08
-    Info: Total CPU time (on all processors): 00:00:07
+    Info: Processing ended: Tue Dec 03 22:34:00 2013
+    Info: Elapsed time: 00:00:13
+    Info: Total CPU time (on all processors): 00:00:08
 
 
 +------------------------------------------+

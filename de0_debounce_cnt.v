@@ -194,6 +194,13 @@ part_mem	part_mem_inst (
 	.wren ( part_mem_wren ),
 	.q (  )
 	);
+	
+// This is SEG0 Display//
+SEG7_LUT	SEG0(
+				 .oSEG   (HEX0_D),
+				 .oSEG_DP(HEX0_DP),
+				 .iDIG   (state[1:0])
+				 );
 
 always @(posedge CLOCK_50)
 begin

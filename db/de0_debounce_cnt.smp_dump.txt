@@ -1,10 +1,4 @@
 
-State Machine - |de0_debounce_cnt|state
-Name state.WAIT_START state.MEMORIZE_PART state.DETECT_START_PART_MEMORIZE 
-state.WAIT_START 0 0 0 
-state.DETECT_START_PART_MEMORIZE 1 0 1 
-state.MEMORIZE_PART 1 1 0 
-
 State Machine - |de0_debounce_cnt|ccd_reader:ccdreader|state
 Name state.READ_CCD_ONE state.IDLE_CCD_READ state.READ_CCD_ZERO 
 state.IDLE_CCD_READ 0 0 0 

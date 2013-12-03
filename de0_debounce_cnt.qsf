@@ -378,6 +378,7 @@ set_global_assignment -name EDA_TEST_BENCH_FILE top_tb.v -section_id top_tb
 set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "1 s" -section_id valve_cmd_tb
 set_global_assignment -name EDA_TEST_BENCH_FILE valve_cmd_tb.v -section_id valve_cmd_tb
 set_global_assignment -name SMART_RECOMPILE ON
+set_global_assignment -name VERILOG_FILE SEG7_LUT.v
 set_global_assignment -name VERILOG_FILE ccd_reader.v
 set_global_assignment -name VERILOG_FILE edge_detect.v
 set_global_assignment -name VERILOG_FILE button_debouncer.v
