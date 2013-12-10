@@ -24,7 +24,12 @@ module de0_debounce_cnt
 		GPIO0_CLKOUT,					//	GPIO Connection 0 Clock Out Bus
 		GPIO1_CLKIN,					//	GPIO Connection 1 Clock In Bus
 		GPIO1_CLKOUT,					//	GPIO Connection 1 Clock Out Bus
-		GPIO0_D							//	GPIO Connection 1 Data Bus
+		GPIO0_D,							//	GPIO Connection 1 Data Bus
+		////////////////////	Push Button		////////////////////
+		ORG_BUTTON,						//	Pushbutton[2:0]
+		////////////////////	7-SEG Dispaly	////////////////////
+		HEX0_D,							//	Seven Segment Digit 0
+		HEX0_DP							//	Seven Segment Digit DP 0
 );
 
 parameter 			[3:0] WAIT_START			 				 = 2'b00,
@@ -44,6 +49,11 @@ output	[1:0]	GPIO0_CLKOUT;		//	GPIO Connection 0 Clock Out Bus
 input		[1:0]	GPIO1_CLKIN;		//	GPIO Connection 1 Clock In Bus
 output	[1:0]	GPIO1_CLKOUT;		//	GPIO Connection 1 Clock Out Bus
 output	[31:0]GPIO0_D;				//	GPIO Connection 1 Data Bus
+////////////////////	7-SEG Dispaly	////////////////////
+output	[6:0]	HEX0_D;				//	Seven Segment Digit 0
+output			HEX0_DP;				//	Seven Segment Digit DP 0
+////////////////////////	Push Button		////////////////////////
+input		[2:0]	ORG_BUTTON;			//	Pushbutton[2:0]
 
 
 //==================================================================
@@ -86,37 +96,44 @@ reg								en_CCD_read_reg;
 //  Structural coding
 //==================================================================
 
-TFF for_ccd(
-	.t(1'b1), 
-	.clk(ccd_clk), 
-	.clrn(), 
-	.prn(), 
-	.q(GPIO0_CLKOUT[0])
-	);
+//TFF for_ccd(
+//	.t(1'b1), 
+//	.clk(ccd_clk), 
+//	.clrn(), 
+//	.prn(), 
+//	.q(GPIO0_CLKOUT[0])
+//	);
+//
+//TFF for_ccd_int(
+//	.t(1'b1), 
+//	.clk(ccd_clk), 
+//	.clrn(), 
+//	.prn(), 
+//	.q(internal_ccd_clk)
+//	);
 
-TFF for_ccd_int(
-	.t(1'b1), 
-	.clk(ccd_clk), 
-	.clrn(), 
-	.prn(), 
-	.q(internal_ccd_clk)
-	);
+LCELL for_ccd (.in(ccd_clk), .out(GPIO0_CLKOUT[0]));
+LCELL for_ccd_int (.in(ccd_clk), .out(internal_ccd_clk));
 	
-TFF for_m(
-	.t(1'b1), 
-	.clk(m_clk), 
-	.clrn(), 
-	.prn(), 
-	.q(GPIO0_CLKOUT[1])
-	);
+//TFF for_m(
+//	.t(1'b1), 
+//	.clk(m_clk), 
+//	.clrn(), 
+//	.prn(), 
+//	.q(GPIO0_CLKOUT[1])
+//	);
+
+LCELL for_m (.in(m_clk), .out(GPIO0_CLKOUT[1]));
 	
-TFF for_sh(
-	.t(1'b1), 
-	.clk(sh_clk), 
-	.clrn(), 
-	.prn(), 
-	.q(GPIO1_CLKOUT[0])
-	);
+//TFF for_sh(
+//	.t(1'b1), 
+//	.clk(sh_clk), 
+//	.clrn(), 
+//	.prn(), 
+//	.q(GPIO1_CLKOUT[0])
+//	);
+
+LCELL for_sh (.in(sh_clk), .out(GPIO1_CLKOUT[0]));
 			 
 // This module creates the clocks for the CCD sensor
 
@@ -124,8 +141,7 @@ clock_ccd	clock_ccd_inst (
 	.areset ( !SW[0] ),
 	.inclk0 ( CLOCK_50 ),
 	.c0 ( ccd_clk ),
-	.c1 ( m_clk ),
-	.c2 (  )
+	.c1 ( m_clk )
 	);
 	
 // This module creates the Sample/Hold signal
